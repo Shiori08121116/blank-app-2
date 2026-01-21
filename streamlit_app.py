@@ -1,15 +1,3 @@
-import streamlit as st
-
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
-st.write("最初の第一歩")
-
-import streamlit as st
-import pandas as pd
-import io
-
 # 1. ページの設定（必ず最初に書く！）
 st.set_page_config(
     page_title="旅行先コンシェルジュ",
