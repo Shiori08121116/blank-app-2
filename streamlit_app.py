@@ -54,60 +54,45 @@ if selected_tags:
     mask = filtered_df['tags'].apply(lambda x: any(tag in x for tag in selected_tags))
     filtered_df = filtered_df[mask]
 
-# --- 7. 結果の表示 (タブを活用したリッチな表示) ---
-with st.container(border=True):
-    st.caption(f"📍 {row['region']}")
-    st.markdown(f"## {row['name']}")
-    st.info(row['desc_text'])
-    
-    # タブを使ってグルメと魅力をキャプション表示
-    t1, t2 = st.tabs(["😋 ご当地グルメ", "✨ おすすめの魅力"])
-    with t1:
-        st.markdown(row['local_food'] if row['local_food'] else "情報を準備中です。")
-    with t2:
-        st.markdown(row['recommended_site'] if row['recommended_site'] else "魅力を調査中です。")
-    
-    st.divider()
-    # ボタン類の配置
-    if st.button(f"❤️ お気に入りに保存", key=f"fav_{row['id']}"):
-        supabase.table("favorites").insert({"spot_name": row['name']}).execute()
-        st.toast(f"{row['name']} を保存しました！")
-        st.rerun()
-# --- 7. 結果の表示 (エラー修正＆タブ版) ---
+# --- 7. 結果の表示 (エラーを修正した完全版) ---
 st.subheader(f"🔍 あなたの好みに合うおすすめ ({len(filtered_df)}件)")
 
+# データが空っぽでないか確認
 if not filtered_df.empty:
-    # データを2列ずつ表示するためのループ
+    # 2列ずつ表示するためのループ
     for i in range(0, len(filtered_df), 2):
         cols = st.columns(2)
+        
         for j in range(2):
-            # 表示するデータがあるかチェック
+            # 表示するデータがまだ残っているか確認
             if i + j < len(filtered_df):
-                row = filtered_df.iloc[i + j] # ここで row を定義
+                # ここで「row」を定義します。これより下で row が使えます。
+                row = filtered_df.iloc[i + j]
                 
                 with cols[j]:
-                    # ここから下は「row」という変数を使って表示する
                     with st.container(border=True):
+                        # ここは row['region'] が使える範囲（インデントの中）です
                         st.caption(f"📍 {row['region']}")
-                        st.markdown(f"## {row['name']}")
+                        st.markdown(f"### {row['name']}")
                         st.info(row['desc_text'])
                         
-                        # タブを使って詳しく表示
+                        # キャプションをタブで詳しく表示
                         t1, t2 = st.tabs(["😋 ご当地グルメ", "✨ おすすめの魅力"])
                         with t1:
-                            # データベースに列がない場合や空の場合の対策
-                            food = row.get('local_food', "情報を準備中です。")
-                            st.write(food if food else "情報を準備中です。")
+                            # row.get('カラム名') を使うと、もし列がなくてもエラーになりません
+                            food = row.get('local_food', "情報を準備中...")
+                            st.write(food if food else "情報を準備中...")
                         with t2:
-                            site = row.get('recommended_site', "魅力を調査中です。")
-                            st.write(site if site else "魅力を調査中です。")
+                            site = row.get('recommended_site', "魅力を調査中...")
+                            st.write(site if site else "魅力を調査中...")
                         
                         st.divider()
                         
-                        # ボタン
+                        # お気に入りボタン
                         if st.button(f"❤️ お気に入りに保存", key=f"fav_{row['id']}"):
                             supabase.table("favorites").insert({"spot_name": row['name']}).execute()
                             st.toast(f"{row['name']} を保存しました！")
                             st.rerun()
 else:
     st.warning("条件に合う場所が見つかりませんでした。別のキーワードを選んでみてください。")
+        
