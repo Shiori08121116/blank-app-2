@@ -8,7 +8,7 @@ Streamlitを利用した、最適な旅行先を提案するWebアプリケー�
 ## URL
 
 このURLで試すことができます（スリープ状態のときは青色の起動ボタンを押してください）：  
-https://[あなたのアプリURLをここに貼り付け].streamlit.app/
+https://blank-app-0qfspdr9fpe.streamlit.app/
 
 ---
 
