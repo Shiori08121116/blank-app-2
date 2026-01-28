@@ -50,7 +50,7 @@ streamlit run streamlit_app.py
 
 ```
 
----
+```
 
 ## 📊 データの仕組み
 
@@ -59,7 +59,7 @@ streamlit run streamlit_app.py
 * **travel_spots**: 観光地の基本情報、地域、タグ、詳細説明、グルメ、魅力を保存
 * **favorites**: ユーザーが「お気に入り」に登録したスポットの名前と登録日時を保存
 
----
+```
 
 ## 💻 使用技術
 
@@ -67,7 +67,7 @@ streamlit run streamlit_app.py
 * **Database**: [Supabase](https://supabase.com/)
 * **Data Handling**: [Pandas](https://pandas.pydata.org/)
 
----
+```
 
 ## 💡 今後のロードマップ（カスタマイズ例）
 
