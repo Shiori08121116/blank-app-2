@@ -54,21 +54,22 @@ if selected_tags:
     mask = filtered_df['tags'].apply(lambda x: any(tag in x for tag in selected_tags))
     filtered_df = filtered_df[mask]
 
-# 7. 結果の表示
-st.subheader(f"おすすめの旅行先 ({len(filtered_df)}件)")
-for i in range(0, len(filtered_df), 2):
-    cols = st.columns(2)
-    for j in range(2):
-        if i + j < len(filtered_df):
-            row = filtered_df.iloc[i + j]
-            with cols[j]:
-                with st.container(border=True):
-                    st.caption(f"📍 {row['region']}")
-                    st.markdown(f"### {row['name']}")
-                    st.write(row['desc_text'])
-                    
-                    # お気に入り登録ボタン（Supabaseへ書き込み）
-                    if st.button(f"❤️ お気に入りに追加", key=f"fav_{row['id']}"):
-                        supabase.table("favorites").insert({"spot_name": row['name']}).execute()
-                        st.success(f"{row['name']} を保存しました！")
-                        st.rerun() # 画面を更新してお気に入りを即時反映
+# --- 7. 結果の表示 (タブを活用したリッチな表示) ---
+with st.container(border=True):
+    st.caption(f"📍 {row['region']}")
+    st.markdown(f"## {row['name']}")
+    st.info(row['desc_text'])
+    
+    # タブを使ってグルメと魅力をキャプション表示
+    t1, t2 = st.tabs(["😋 ご当地グルメ", "✨ おすすめの魅力"])
+    with t1:
+        st.markdown(row['local_food'] if row['local_food'] else "情報を準備中です。")
+    with t2:
+        st.markdown(row['recommended_site'] if row['recommended_site'] else "魅力を調査中です。")
+    
+    st.divider()
+    # ボタン類の配置
+    if st.button(f"❤️ お気に入りに保存", key=f"fav_{row['id']}"):
+        supabase.table("favorites").insert({"spot_name": row['name']}).execute()
+        st.toast(f"{row['name']} を保存しました！")
+        st.rerun()
