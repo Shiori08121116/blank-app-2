@@ -28,3 +28,49 @@ Python環境がインストールされていることを確認し、必要な�
 
 ```bash
 pip install streamlit pandas supabase
+2. データベースの準備 (Supabase)
+
+Supabaseプロジェクトを作成し、travel_spotsテーブルとfavoritesテーブルを作成してください。
+
+travel_spots テーブルの構成例: | name | region | tags | desc_text | local_food | recommended_site | | :--- | :--- | :--- | :--- | :--- | :--- | | 知床 | 北海道 | 自然, 世界遺産 | 豊かな自然... | 海鮮丼 | 知床五湖 |
+3. アプリの起動
+
+以下のコマンドでアプリを起動します。
+Bash
+
+streamlit run streamlit_app.py
+
+📊 データの仕組み
+
+このアプリは Supabase (PostgreSQL) を使用してデータを管理しています。
+
+    travel_spots: 観光地の基本情報、地域、タグ、詳細説明、グルメ、魅力を保存
+
+    favorites: ユーザーが「お気に入り」に登録したスポットの名前と登録日時を保存
+
+💻 使用技術
+
+    Frontend/UI: Streamlit
+
+    Database: Supabase
+
+    Data Handling: Pandas
+
+💡 今後のロードマップ（カスタマイズ例）
+
+    画像ギャラリー機能: 観光地の写真をスライドショー形式で表示
+
+    予算シミュレーター: 現地での想定予算を自動計算する機能
+
+    マップ連携: Google Maps APIと連携し、場所を地図上に表示
+
+
+---
+
+### ✅ 最終チェックリスト
+1.  **URLの変更**: `https://travel-app-sample.streamlit.app/` の部分を、実際のあなたのアプリのURLに書き換えましたか？
+2.  **ファイルの作成**: GitHubのリポジトリで「Add file」→「Create new file」から、ファイル名を必ず **`README.md`** にしましたか？
+
+これを保存すれば、あなたのアプリの「説明書」がプロフェッショナルな見た目で公開されます！
+
+他に必要な準備はありますか？いつでもお手伝いしますよ！
