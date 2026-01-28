@@ -1,16 +1,13 @@
-```markdown
 # 🗺️ 日本全国 旅行先コンシェルジュ Pro
 
 Streamlitを利用した、最適な旅行先を提案するWebアプリケーションです。ユーザーの好みや地域に基づいて観光地を絞り込み、現地の詳細なグルメ情報や魅力をキャプション形式で紹介します。
 
-```
 
 ## URL
 
 このURLで試すことができます（スリープ状態のときは青色の起動ボタンを押してください）：  
 https://blank-app-0qfspdr9fpe.streamlit.app/
 
-```
 
 ## 🌟 主な機能
 
@@ -19,7 +16,6 @@ https://blank-app-0qfspdr9fpe.streamlit.app/
 * **お気に入り保存機能**: 気になった場所を「❤️ お気に入り」として保存でき、サイドバーからいつでも過去の履歴を確認できます。
 * **クラウドDB連携**: Supabaseを使用することで、お気に入りデータや観光地マスターデータをクラウド上で永続的に管理します。
 
-```
 
 ## 🛠 セットアップ方法
 
@@ -50,7 +46,6 @@ streamlit run streamlit_app.py
 
 ```
 
-```
 
 ## 📊 データの仕組み
 
@@ -59,7 +54,6 @@ streamlit run streamlit_app.py
 * **travel_spots**: 観光地の基本情報、地域、タグ、詳細説明、グルメ、魅力を保存
 * **favorites**: ユーザーが「お気に入り」に登録したスポットの名前と登録日時を保存
 
-```
 
 ## 💻 使用技術
 
@@ -67,7 +61,6 @@ streamlit run streamlit_app.py
 * **Database**: [Supabase](https://supabase.com/)
 * **Data Handling**: [Pandas](https://pandas.pydata.org/)
 
-```
 
 ## 💡 今後のロードマップ（カスタマイズ例）
 
@@ -75,4 +68,3 @@ streamlit run streamlit_app.py
 * **予算シミュレーター**: 現地での想定予算を自動計算する機能
 * **マップ連携**: Google Maps APIと連携し、場所を地図上に表示
 
-```
