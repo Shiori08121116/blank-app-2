@@ -1,19 +1,30 @@
-# 🎈 Blank app template
+# 🗺️ 日本全国 旅行先コンシェルジュ Pro
 
-A simple Streamlit app template for you to modify!
+Streamlitを利用した、最適な旅行先を提案するWebアプリケーションです。ユーザーの好みや地域に基づいて観光地を絞り込み、現地の詳細なグルメ情報や魅力をキャプション形式で紹介します。
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+---
 
-### How to run it on your own machine
+## URL
 
-1. Install the requirements
+このURLで試すことができます（スリープ状態のときは青色の起動ボタンを押してください）：  
+https://[あなたのアプリ名].streamlit.app/
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+---
 
-2. Run the app
+## 🌟 主な機能
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+* **こだわり検索機能**: データベースから「地域」や「こだわりタグ（自然、歴史、都会など）」に基づいて、ユーザーにぴったりの旅行先を提案します。
+* **リッチキャプション表示**: 提案された各スポットに対し、タブ切り替えで「ご当地グルメ」や「おすすめの魅力」の詳細情報を閲覧できます。
+* **お気に入り保存機能**: 気になった場所を「❤️ お気に入り」として保存でき、サイドバーからいつでも過去の履歴を確認できます。
+* **クラウドDB連携**: Supabaseを使用することで、お気に入りデータや観光地マスターデータをクラウド上で永続的に管理します。
+
+---
+
+## 🛠 セットアップ方法
+
+### 1. 依存ライブラリのインストール
+
+Python環境がインストールされていることを確認し、必要なライブラリをインストールしてください。
+
+```bash
+pip install streamlit pandas supabase
